@@ -92,12 +92,14 @@ class Contact extends React.Component {
 			}
 		})
 			.then(r => {
-				e.target.namefield.disabled = true;
+				message.success('Thank you for submitting. We will get back to you soon.', 10);
+
 				e.target.email.disabled = true;
 				e.target.phone.disabled = true;
 				e.target.message.disabled = true;
 				e.target.sub.disabled = true;
-				message.success('Thank you for submitting. We will get back to you soon.', 10);
+				e.target.namefield.disabled = true;
+
 
 			})
 			.catch(r => {
