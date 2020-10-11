@@ -94,11 +94,7 @@ class Contact extends React.Component {
 			.then(r => {
 				message.success('Thank you for submitting. We will get back to you soon.', 10);
 
-				e.target.email.disabled = true;
-				e.target.phone.disabled = true;
-				e.target.message.disabled = true;
-				e.target.sub.disabled = true;
-				e.target.namefield.disabled = true;
+
 
 
 			})
@@ -106,6 +102,11 @@ class Contact extends React.Component {
 				message.error('An error occurred. Please try again later.', 10);
 				console.log(r);
 			});
+		e.target.email.disabled = true;
+		e.target.phone.disabled = true;
+		e.target.message.disabled = true;
+		e.target.sub.disabled = true;
+		e.target.namefield.disabled = true;
 		e.preventDefault();
 	}
 
