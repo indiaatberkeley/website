@@ -202,11 +202,13 @@ const RenderBody = ({ home, projects, meta, posts, slideimg }) => (
 			>
 
 				{slideimg.map((slideshow, i) => (
-					<Slide
-						key={i}
-						image={slideshow.node.slideshow_image}
-						alttext={slideshow.node.slideshow_alttext}
-					/>
+					<SwiperSlide>
+						<img
+							src={slideshow.node.slideshow_image.url}
+							alt={slideshow.node.slideshow_alttext[0].text}
+							width="100%" />
+					</SwiperSlide>
+
 				))}
 
 			</Swiper>
