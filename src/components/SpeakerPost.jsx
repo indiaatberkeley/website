@@ -259,7 +259,7 @@ class MyComponent extends React.Component {
 
 	render() {
 
-		const { category, title, description, thumbnail, uid, body, register, linktext, linkurl, date } = this.props
+		const { category, title, description, thumbnail, uid, body, registertext, registerlink, linktext, linkurl, date } = this.props
 
 		return (
 			<div>
@@ -315,10 +315,10 @@ class MyComponent extends React.Component {
 						<ModalImage>
 							<ModalImageTag src={thumbnail.url} alt={title[0].text} />
 							<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1.5em' }}>
-								<a href={register[0].text} target="_blank" style={{ width: '47%' }}>
+								<a href={registerlink[0].text} target="_blank" style={{ width: '47%' }}>
 									<Button className="Button--secondary" style={{ width: "100%" }}>
-										Register
-								</Button>
+										{registertext[0].text}
+									</Button>
 								</a>
 								<a href={linkurl[0].text} target="_blank" style={{ width: "47% " }}>
 									< Button className="Button--secondary" style={{ width: "100%" }} >

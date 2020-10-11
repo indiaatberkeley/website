@@ -222,7 +222,8 @@ const RenderBody = ({ home, projects, meta, posts }) => (
 						body={project.node.project_description}
 						linkurl={project.node.project_linkurl}
 						linktext={project.node.project_linktext}
-						register={project.node.project_register}
+						registerlink={project.node.project_registerlink}
+						registertext={project.node.project_registertext}
 						thumbnail={project.node.project_preview_thumbnail}
 						uid={project.node._meta.uid}
 						date={project.node.project_post_date}
@@ -277,7 +278,8 @@ export default ({ data }) => {
 			project_description
 			project_linkurl
 			project_linktext
-			project_register
+			project_registerlink
+			project_registertext
             project_post_date
             _meta {
               uid

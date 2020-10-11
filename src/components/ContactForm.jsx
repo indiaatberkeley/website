@@ -71,7 +71,7 @@ class Contact extends React.Component {
 
 	handleSubmit = e => {
 
-		const fields = { "fields": { "Name": e.target.name.value, "Email": e.target.email.value, "Phone": e.target.phone.value, "Message": e.target.message.value } }
+		const fields = { "fields": { "Name": e.target.namefield.value, "Email": e.target.email.value, "Phone": e.target.phone.value, "Message": e.target.message.value } }
 		// fetch("https://api.airtable.com/v0/appGvTEW3Q4spcppz/Submissions", {
 		// 	method: "POST",
 		// 	headers: {
@@ -92,12 +92,13 @@ class Contact extends React.Component {
 			}
 		})
 			.then(r => {
-				message.success('Thank you for submitting. We will get back to you soon.', 10);
-				e.target.name.disabled = true;
+				e.target.namefield.disabled = true;
 				e.target.email.disabled = true;
 				e.target.phone.disabled = true;
 				e.target.message.disabled = true;
 				e.target.sub.disabled = true;
+				message.success('Thank you for submitting. We will get back to you soon.', 10);
+
 			})
 			.catch(r => {
 				message.error('An error occurred. Please try again later.', 10);
@@ -115,7 +116,7 @@ class Contact extends React.Component {
 				<input type="hidden" name="_captcha" value="false" />
 
 				<div className="form-group" style={{ width: "70%", minWidth: "350px" }}>
-					<Input type="text" name="name" placeholder="Name" className="ContactFormInput" id="name" required="required" />
+					<Input type="text" name="namefield" placeholder="Name" className="ContactFormInput" id="namefield" required="required" />
 					<Input type="email" name="email" placeholder="Email" className="ContactFormInput" id="email" required="required" />
 					<Input type="text" name="phone" placeholder="Phone Number" className="ContactFormInput" />
 					<TextArea rows={6} name="message" placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} required="required" />
