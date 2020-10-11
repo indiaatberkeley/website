@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
-		title: `Speaker Series India at Berkeley`,
-		description: `Speaker Series India at Berkeley`,
+		title: `Speaker Series: India at Berkeley`,
+		description: `Speaker Series: India at Berkeley`,
 		author: `Piyush Pahuja`,
 	},
 	plugins: [
@@ -26,7 +26,7 @@ module.exports = {
 		{
 			resolve: '@prismicio/gatsby-source-prismic-graphql',
 			options: {
-				repositoryName: 'indiaatberkeley', // (REQUIRED, replace with your own)
+				repositoryName: 'speakerseriesindia', // (REQUIRED, replace with your own)
 				linkResolver: () => post => `/${post.uid}`,
 			}
 		},
