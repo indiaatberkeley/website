@@ -15,6 +15,7 @@ import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper"
 import slide1 from "images/slide1.png"
 import slide2 from "images/slide2.png"
 import slide3 from "images/slide3.png"
+import Slide from "components/Slideshow"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -150,7 +151,7 @@ margin-top: 4em;
   }
 `
 
-const RenderBody = ({ home, projects, meta, posts }) => (
+const RenderBody = ({ home, projects, meta, posts, slideimg }) => (
 	<>
 		<Helmet
 			title={meta.title}
@@ -199,15 +200,15 @@ const RenderBody = ({ home, projects, meta, posts }) => (
 				autoplay={{ delay: 3000 }}
 
 			>
-				<SwiperSlide>
-					<img src={slide1} alt="slide1" width="100%" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src={slide2} alt="slide2" width="100%" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src={slide3} alt="slide3" width="100%" />
-				</SwiperSlide>
+
+				{slideimg.map((slideshow, i) => (
+					<Slide
+						key={i}
+						image={slideshow.node.slideshow_image}
+						alttext={slideshow.node.slideshow_alttext}
+					/>
+				))}
+
 			</Swiper>
 		</Hero>
 
@@ -268,7 +269,7 @@ export default ({ data }) => {
           }
         }
       }
-      allProjects {
+      allProjects(sortBy: project_post_date_DESC) {
         edges {
           node {
             project_title
@@ -287,7 +288,7 @@ export default ({ data }) => {
           }
         }
       }
-      allPosts(sortBy: post_date_DESC) {
+      allPosts {
         edges {
           node {
             post_title
@@ -298,6 +299,15 @@ export default ({ data }) => {
             _meta {
               uid
             }
+          }
+        }
+	  }
+	  allSlideshows {
+        edges {
+          node {
+			slideshow_image
+			slideshow_alttext
+			slideshow_date
           }
         }
       }
@@ -318,6 +328,7 @@ export default ({ data }) => {
 						projects={data.prismic.allProjects.edges}
 						meta={data.site.siteMetadata}
 						posts={data.prismic.allPosts.edges}
+						slideimg={data.prismic.allSlideshows.edges}
 					/>
 				</Layout>
 			)}
