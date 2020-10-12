@@ -159,7 +159,7 @@ export default ({ }) => {
           }
         }
       }
-      allProjects(sortBy: post_date_DESC) {
+      allProjects(sortBy: project_post_date_DESC) {
         edges {
           node {
             project_title
