@@ -127,7 +127,8 @@ const PostDescription = styled("div")`
 
 	
     @media(max-width:${dimensions.maxwidthTablet}px) {
-        margin-bottom: 2.5em;
+		margin-bottom: 2.5em;
+		min-height: 0em;
     }
 
    /* p:last-of-type {
@@ -143,9 +144,13 @@ const ModalPostDescription = styled("div")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
 	min-height: 6em;
-
+    
+	text-align: justify;
 	
-  
+   @media(max-width:${dimensions.maxwidthTablet}px) {
+		min-height: 0em;
+		
+    }
 
    /* p:last-of-type {
         margin: 0;
@@ -206,10 +211,13 @@ align-self: center;
 const ModalText = styled('div')`
 width: 50%; 
 padding-right: 2.5em;
+max-height: 80vh;
+	overflow-y: scroll;
 	@media (max-width: ${dimensions.maxwidthTablet}px) {
    width: 100%;
-   max-height: 50%;
+   max-height: 50vh;
    margin-top: 1.5em;
+   padding-right: 0em;
   }
 `
 
@@ -319,7 +327,7 @@ class MyComponent extends React.Component {
 								{category[0].text}
 							</PostCategory>
 							<PostTitle>{title[0].text}</PostTitle>
-							<ModalPostDescription style={{ textAlign: 'justify', overflow: 'auto' }}>{RichText.render(body)}</ModalPostDescription>
+							<ModalPostDescription>{RichText.render(body)}</ModalPostDescription>
 							<PostMetas>
 								<PostDate>
 									<Moment format="MMMM D, YYYY">{date}</Moment>
