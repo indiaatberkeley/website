@@ -212,7 +212,7 @@ const ModalText = styled('div')`
 width: 50%; 
 padding-right: 2.5em;
 max-height: 80vh;
-	overflow-y: scroll;
+	overflow-y: auto;
 	@media (max-width: ${dimensions.maxwidthTablet}px) {
    width: 100%;
    max-height: 50vh;

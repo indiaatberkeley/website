@@ -259,7 +259,7 @@ export default ({ data }) => {
           }
         }
       }
-      allProjects(sortBy: project_post_date_DESC) {
+      allProjects(sortBy: project_post_date_DESC, first:3) {
         edges {
           node {
             project_title
