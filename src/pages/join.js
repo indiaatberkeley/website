@@ -117,7 +117,7 @@ const RenderBody = ({ meta, timeline }) => (
 export default ({ data }) => {
 	//Required check for no data being returned
 	const meta = data.site.siteMetadata
-	const timeline = data.prismic.allSlideshows.edges
+	const timeline = data.prismic.allTimelines.edges
 
 	return (
 		<Layout>
