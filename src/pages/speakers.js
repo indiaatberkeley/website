@@ -92,6 +92,7 @@ const Work = ({ projects, meta }) => (
 						registerlink={project.node.project_registerlink}
 						registertext={project.node.project_registertext}
 						thumbnail={project.node.project_preview_thumbnail}
+						image={project.node.project_hero_image}
 						uid={project.node._meta.uid}
 						date={project.node.project_post_date}
 					/>
@@ -124,6 +125,7 @@ export const query = graphql`
 						project_title
 						project_preview_description
 						project_preview_thumbnail
+						project_hero_image
 						project_category
 						project_description
 						project_registerlink

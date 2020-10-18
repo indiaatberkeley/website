@@ -143,19 +143,8 @@ export default ({ }) => {
         edges {
           node {
             hero_title
-            hero_button_text
-            hero_button_link {
-              ... on PRISMIC__ExternalLink {
-                _linkType
-                url
-              }
-            }
-            content
             about_title
             about_bio
-            about_links {
-              about_link
-            }
           }
         }
       }

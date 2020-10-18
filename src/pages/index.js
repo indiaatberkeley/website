@@ -228,6 +228,7 @@ const RenderBody = ({ home, projects, meta, posts, slideimg }) => (
 						registerlink={project.node.project_registerlink}
 						registertext={project.node.project_registertext}
 						thumbnail={project.node.project_preview_thumbnail}
+						image={project.node.project_hero_image}
 						uid={project.node._meta.uid}
 						date={project.node.project_post_date}
 					/>
@@ -255,19 +256,6 @@ export default ({ data }) => {
         edges {
           node {
             hero_title
-            hero_button_text
-            hero_button_link {
-              ... on PRISMIC__ExternalLink {
-                _linkType
-                url
-              }
-            }
-            content
-            about_title
-            about_bio
-            about_links {
-              about_link
-            }
           }
         }
       }
@@ -276,7 +264,8 @@ export default ({ data }) => {
           node {
             project_title
             project_preview_description
-            project_preview_thumbnail
+			project_preview_thumbnail
+			project_hero_image
 			project_category
 			project_description
 			project_linkurl
