@@ -139,6 +139,23 @@ const PostDescription = styled("div")`
 
 `
 
+const ModalPostDescription = styled("div")`
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+	min-height: 6em;
+
+	
+  
+
+   /* p:last-of-type {
+        margin: 0;
+	}
+	*/
+
+
+
+`
+
 const PostCardAction = styled("div")`
     font-weight: 600;
     text-decoration: none;
@@ -198,9 +215,7 @@ padding-right: 2.5em;
 
 const ModalImageTag = styled('img')`
 max-width: 100%;
-	@media (max-width: ${dimensions.maxwidthTablet}px) {
-   height: 34vh;
-  }
+	
 `
 
 const PostCard = ({ category, title, description, thumbnail, uid, date }) => (
@@ -304,8 +319,7 @@ class MyComponent extends React.Component {
 								{category[0].text}
 							</PostCategory>
 							<PostTitle>{title[0].text}</PostTitle>
-							<PostDescription style={{ textAlign: 'justify' }}>{RichText.render(body)}</PostDescription>
-
+							<ModalPostDescription style={{ textAlign: 'justify', overflow: 'auto' }}>{RichText.render(body)}</ModalPostDescription>
 							<PostMetas>
 								<PostDate>
 									<Moment format="MMMM D, YYYY">{date}</Moment>
@@ -316,12 +330,12 @@ class MyComponent extends React.Component {
 							<ModalImageTag src={image.url} alt={title[0].text} />
 							<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1.5em' }}>
 								<a href={registerlink[0].text} target="_blank" style={{ width: '47%' }}>
-									<Button className="Button--secondary" style={{ width: "100%" }}>
+									<Button className="Button--secondary" style={{ width: "100%", height: "100%" }}>
 										{registertext[0].text}
 									</Button>
 								</a>
 								<a href={linkurl[0].text} target="_blank" style={{ width: "47% " }}>
-									< Button className="Button--secondary" style={{ width: "100%" }} >
+									< Button className="Button--secondary" style={{ width: "100%", height: "100%" }} >
 										{linktext[0].text}
 									</Button>
 								</a>
