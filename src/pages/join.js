@@ -103,7 +103,7 @@ const RenderBody = ({ meta, timeline }) => (
 			{timeline.map((item, i) => (
 				<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
 					<TimelineTitle>{item.node.timeline_title[0].text}</TimelineTitle>
-					<TimelineContent>{item.node.timeline_description[0].RichText}</TimelineContent>
+					<TimelineContent>{RichText.render(item.node.timeline_description)}</TimelineContent>
 				</Timeline.Item>
 			))}
 		</Timeline>
