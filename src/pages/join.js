@@ -49,7 +49,7 @@ const TimelineContent = styled("h6")`
 
 
 
-const RenderBody = ({ meta }) => (
+const RenderBody = ({ meta, timeline }) => (
 	<>
 		<Helmet
 			title={`Join | Speaker Series: India@Berkeley`}
@@ -99,26 +99,13 @@ const RenderBody = ({ meta }) => (
 				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
 			</Timeline.Item>
 
-			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
-				<TimelineTitle>breuiveuir</TimelineTitle>
-				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
-			</Timeline.Item>
 
-			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
-				<TimelineTitle>breuiveuir</TimelineTitle>
-				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
-			</Timeline.Item>
-
-			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
-				<TimelineTitle>breuiveuir</TimelineTitle>
-				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
-			</Timeline.Item>
-
-			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
-				<TimelineTitle>breuiveuir</TimelineTitle>
-				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
-			</Timeline.Item>
-
+			{timeline.map((item, i) => (
+				<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
+					<TimelineTitle>{item.node.timeline_title[0].text}</TimelineTitle>
+					<TimelineContent>{item.node.timeline_description[0].RichText}</TimelineContent>
+				</Timeline.Item>
+			))}
 		</Timeline>
 
 
@@ -130,10 +117,11 @@ const RenderBody = ({ meta }) => (
 export default ({ data }) => {
 	//Required check for no data being returned
 	const meta = data.site.siteMetadata
+	const timeline = data.prismic.allSlideshows.edges
 
 	return (
 		<Layout>
-			<RenderBody meta={meta} />
+			<RenderBody meta={meta} timeline={timeline} />
 
 		</Layout>
 	)
@@ -162,6 +150,17 @@ export const query = graphql`
             project_preview_thumbnail
             project_category
             project_post_date
+            _meta {
+              uid
+            }
+          }
+        }
+	  }
+	  allTimelines {
+        edges {
+          node {
+			timeline_title
+			timeline_description
             _meta {
               uid
             }
