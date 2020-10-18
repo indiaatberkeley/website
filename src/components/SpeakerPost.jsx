@@ -188,7 +188,7 @@ align-self: center;
 
 const ModalText = styled('div')`
 width: 50%; 
-padding-right: 1em;
+padding-right: 2.5em;
 	@media (max-width: ${dimensions.maxwidthTablet}px) {
    width: 100%;
    max-height: 50%;
@@ -304,7 +304,7 @@ class MyComponent extends React.Component {
 								{category[0].text}
 							</PostCategory>
 							<PostTitle>{title[0].text}</PostTitle>
-							<PostDescription>{RichText.render(body)}</PostDescription>
+							<PostDescription style={{ textAlign: 'justify' }}>{RichText.render(body)}</PostDescription>
 
 							<PostMetas>
 								<PostDate>
